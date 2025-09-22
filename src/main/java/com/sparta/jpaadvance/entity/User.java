@@ -13,12 +13,4 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    @OneToOne(mappedBy = "user")
-    private Food food;
-
-    public void addFood(Food food) { //외래키의 주인이 아닌데 외래키 넣는법
-        this.food = food;
-        food.setUser(this); //나자신 객체(User)
-    }
 }

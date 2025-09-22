@@ -2,9 +2,8 @@ package com.sparta.jpaadvance.relation;
 
 import com.sparta.jpaadvance.entity.Food;
 import com.sparta.jpaadvance.entity.User;
-import com.sparta.jpaadvance.respository.FoodRepository;
-import com.sparta.jpaadvance.respository.UserRepository;
-import org.junit.jupiter.api.AutoClose;
+import com.sparta.jpaadvance.repository.FoodRepository;
+import com.sparta.jpaadvance.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class OneToOneTest {
         // 외래 키의 주인이 아닌 User 에서 Food 를 저장해보겠습니다.
         User user = new User();
         user.setName("Robbie");
-        user.setFood(food); //외래키가 null (외래키의 주인이 아니기 때문에)
+ //       user.setFood(food); //외래키가 null (외래키의 주인이 아니기 때문에)
 
         userRepository.save(user);
         foodRepository.save(food);
@@ -74,7 +73,7 @@ public class OneToOneTest {
         // 외래 키(연관 관계) 설정 food.setUser(this); 추가
         User user = new User();
         user.setName("Robbie");
-        user.addFood(food);
+ //       user.addFood(food);
 
         userRepository.save(user);
         foodRepository.save(food);
@@ -115,9 +114,9 @@ public class OneToOneTest {
         // 고객 정보 조회
         System.out.println("user.getName() = " + user.getName());
 
-        // 해당 고객이 주문한 음식 정보 조회
-        Food food = user.getFood();
-        System.out.println("food.getName() = " + food.getName());
-        System.out.println("food.getPrice() = " + food.getPrice());
+//        // 해당 고객이 주문한 음식 정보 조회
+//        Food food = user.getFood();
+//        System.out.println("food.getName() = " + food.getName());
+//        System.out.println("food.getPrice() = " + food.getPrice());
     }
 }
