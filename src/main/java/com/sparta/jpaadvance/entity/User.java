@@ -17,7 +17,12 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Food> foodList = new ArrayList<>();
 
+    //외래키의 주인이 아닌데 외래키를 설정하고 싶을 때
+    public void addFoodList(Food food) {
+        this.foodList.add(food);
+        food.setUser(this); //외래키 설정
+    }
 }
